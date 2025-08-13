@@ -20,13 +20,12 @@ egen unit_yearmonth= group(sampling_unit year month)
 
 
 *Mixed-effect logistic model
-*2003-2009
-
+*2006-2009
 preserve
 
 *filter year
 drop if year>2009
-drop if year==2005 /*Martin Krkosek's team did not collect data in this year*/
+drop if year<2006 /*Martin Krkosek's team did not collect data in this year*/
 
 *Univariable mixed-effect logistic regression
 melogit sealicemot_bin i.source||unit_yearmonth:|| event_id:
@@ -55,21 +54,6 @@ testparm i.sampling_unit
 
 *ICC
 estat icc
-
-*pairwise comparision
-pwcompare i.source , pveffects groups mcompare(bonferroni)
-
-*Pairwise log-odds with 95% CI
-lincom 5.source - 2.source, level(95)       // Krkosek vs DFO
-lincom 6.source - 2.source, level(95)       // Raincoast vs DFO
-lincom 6.source - 5.source, level(95)       // Raincoast vs Krkosek
-
-*Exponentiated contrasts (Odds Ratios) with 95% CI
-lincom 5.source - 2.source, eform level(95) // Krkosek vs DFO
-lincom 6.source - 2.source, eform level(95) // Raincoast vs DFO
-lincom 6.source - 5.source, eform level(95) // Raincoast vs Krkosek
-
-
 restore
 
 ***********************motiles (any species)***************************
@@ -149,13 +133,13 @@ restore
 
 
 ***********************motiles (any species)***************************
-*Mixed-effect negative binomial model logistic model
-*2003-2009
+*Mixed-effect negative binomial model 
+*2006-2009
 preserve
 
 *filter year
 drop if year>2009
-drop if year==2005 /*Martin Krkosek's team did not collect data in this year*/
+drop if year<2006 /*Martin Krkosek's team did not collect data in this year*/
 
 *Univariable mixed-effect negative binomial model
 menbreg sealice_mot i.source||unit_yearmonth:|| event_id:
@@ -181,40 +165,10 @@ testparm i.year
 testparm i.month
 testparm i.sampling_unit
 
-*pairwise comparision
-pwcompare i.source , pveffects groups mcompare(bonferroni)
-
-* Step 2: Pairwise log-odds comparisons with 95% CI
-lincom 5.source - 2.source, level(95)       // Krkosek vs DFO
-lincom 6.source - 2.source, level(95)       // Raincoast vs DFO
-lincom 6.source - 5.source, level(95)       // Raincoast vs Krkosek
-
-* Step 3: Exponentiated contrasts (Odds Ratios) with 95% CI
-lincom 5.source - 2.source, eform level(95) // Krkosek vs DFO
-lincom 6.source - 2.source, eform level(95) // Raincoast vs DFO
-lincom 6.source - 5.source, eform level(95) // Raincoast vs Krkosek
-
-
-*Get observed vs predicted proportion of zeros
-count if sealice_mot==0
-scalar obs_zeros = r(N) //save number of zero counts
-
-count sealice_mot
-scalar total_obs = r(N) //save number total obseravations counts
-scalar prop_obs_zeros = obs_zeros / total_obs
-display "Observed proportion of zeros" = prop_obs_zeros
-
-
-* Mean predicted probability of zero
-summarize p0
-scalar prop_pred_zeros = r(mean)
-display "Mean predicted probability of zero (p0) = " prop_pred_zeros
-
-
 restore
 
 ***********************motiles (any species)***************************
-*Mixed-effect negative binomial model logistic model
+*Mixed-effect negative binomial model 
 *2010-2012
 preserve
 
@@ -249,7 +203,7 @@ testparm i.sampling_unit
 restore
 
 ***********************motiles (any species)***************************
-*Mixed-effect negative binomial model logistic model
+*Mixed-effect negative binomial model 
 *2016-2023
 preserve
 
@@ -290,13 +244,13 @@ restore
 
 
 *Mixed-effect logistic model
-*2003-2009
+*2006-2009
 
 preserve
 
 *filter year
 drop if year>2009
-drop if year==2005 /*Martin Krkosek's team did not collect data in this year*/
+drop if year<2006 /*Martin Krkosek's team did not collect data in this year*/
 
 *Univariable mixed-effect logistic regression
 melogit sealicenmot_bin i.source||unit_yearmonth:|| event_id:
@@ -325,19 +279,6 @@ testparm i.sampling_unit
 
 *ICC
 estat icc
-
-*pairwise comparision
-pwcompare i.source , pveffects groups mcompare(bonferroni)
-
-*Pairwise log-odds with 95% CI
-lincom 5.source - 2.source, level(95)       // Krkosek vs DFO
-lincom 6.source - 2.source, level(95)       // Raincoast vs DFO
-lincom 6.source - 5.source, level(95)       // Raincoast vs Krkosek
-
-*Exponentiated contrasts (Odds Ratios) with 95% CI
-lincom 5.source - 2.source, eform level(95) // Krkosek vs DFO
-lincom 6.source - 2.source, eform level(95) // Raincoast vs DFO
-lincom 6.source - 5.source, eform level(95) // Raincoast vs Krkosek
 
 restore
 
@@ -420,12 +361,12 @@ restore
 
 ***********************Non-motiles (any species)***************************
 *Mixed-effect negative binomial model logistic model
-*2003-2009
+*2006-2009
 preserve
 
 *filter year
 drop if year>2009
-drop if year==2005 /*Martin Krkosek's team did not collect data in this year*/
+drop if year<2006  /*Martin Krkosek's team did not collect data in this year*/
 
 *Univariable mixed-effect negative binomial model
 menbreg sealice_nmot i.source||unit_yearmonth:|| event_id:
@@ -450,24 +391,10 @@ testparm i.fish_spec
 testparm i.year
 testparm i.month
 testparm i.sampling_unit
-
-*pairwise comparision
-pwcompare i.source , pveffects groups mcompare(bonferroni)
-
-* Step 2: Pairwise log-odds comparisons with 95% CI
-lincom 5.source - 2.source, level(95)       // Krkosek vs DFO
-lincom 6.source - 2.source, level(95)       // Raincoast vs DFO
-lincom 6.source - 5.source, level(95)       // Raincoast vs Krkosek
-
-* Step 3: Exponentiated contrasts (Odds Ratios) with 95% CI
-lincom 5.source - 2.source, eform level(95) // Krkosek vs DFO
-lincom 6.source - 2.source, eform level(95) // Raincoast vs DFO
-lincom 6.source - 5.source, eform level(95) // Raincoast vs Krkosek
-
 restore
 
 ***********************Non-motiles (any species)***************************
-*Mixed-effect negative binomial model logistic model
+*Mixed-effect negative binomial model 
 *2010-2012
 preserve
 
@@ -502,7 +429,7 @@ testparm i.sampling_unit
 restore
 
 ***********************Non-motiles (any species)***************************
-*Mixed-effect negative binomial model logistic model
+*Mixed-effect negative binomial model 
 *2016-2023
 preserve
 
@@ -531,6 +458,420 @@ testparm i.source
 testparm i.length_cat
 testparm i.fish_spec
 testparm i.year
+testparm i.month
+testparm i.sampling_unit
+
+restore
+
+
+
+
+
+*ANALYSIS FOR THE SUPPLEMENTARY MATERIAL
+
+***********************************************************************
+***********************MOTILES (any species)***************************
+***********************************************************************
+
+*Mixed-effect logistic model
+*2003
+preserve
+*filter year
+keep if year==2003
+*Create a new hierarchial structure combining only sampling unit and month as there is a single year here
+egen unit_month= group(sampling_unit month)
+
+*Univariable mixed-effect logistic regression
+melogit sealicemot_bin i.source||unit_month:|| event_id:
+testparm i.source
+melogit sealicemot_bin i.length_cat||unit_month:|| event_id:
+testparm i.length_cat
+melogit sealicemot_bin i.fish_spec||unit_month:|| event_id:
+testparm i.fish_spec
+melogit sealicemot_bin i.month||unit_month:|| event_id:
+testparm i.month
+melogit sealicemot_bin i.sampling_unit||unit_month:|| event_id:
+testparm i.sampling_unit
+
+
+*multivariable mixed-effect logistic regression
+melogit sealicemot_bin i.source i.length_cat i.fish_spec i.month i.sampling_unit ||unit_month:|| event_id:,or
+
+testparm i.source
+testparm i.length_cat
+testparm i.fish_spec
+testparm i.month
+testparm i.sampling_unit
+
+*ICC
+estat icc
+restore
+
+
+
+*Mixed-effect logistic model
+*2004
+preserve
+*filter year
+keep if year==2004
+*Create a new hierarchial structure combining only sampling unit and month as there is a single year here
+egen unit_month= group(sampling_unit month)
+
+*Univariable mixed-effect logistic regression
+melogit sealicemot_bin i.source||unit_month:|| event_id:
+testparm i.source
+melogit sealicemot_bin i.length_cat||unit_month:|| event_id:
+testparm i.length_cat
+melogit sealicemot_bin i.fish_spec||unit_month:|| event_id:
+testparm i.fish_spec
+melogit sealicemot_bin i.month||unit_month:|| event_id:
+testparm i.month
+melogit sealicemot_bin i.sampling_unit||unit_month:|| event_id:
+testparm i.sampling_unit
+
+
+*multivariable mixed-effect logistic regression
+melogit sealicemot_bin i.source i.length_cat i.fish_spec i.month i.sampling_unit ||unit_month:|| event_id:,or
+
+testparm i.source
+testparm i.length_cat
+testparm i.fish_spec
+testparm i.month
+testparm i.sampling_unit
+
+*ICC
+estat icc
+restore
+
+*Mixed-effect logistic model
+*2005
+preserve
+*filter year
+keep if year==2005
+*Create a new hierarchial structure combining only sampling unit and month as there is a single year here
+egen unit_month= group(sampling_unit month)
+
+*Univariable mixed-effect logistic regression
+melogit sealicemot_bin i.source||unit_month:|| event_id:
+testparm i.source
+melogit sealicemot_bin i.length_cat||unit_month:|| event_id:
+testparm i.length_cat
+melogit sealicemot_bin i.fish_spec||unit_month:|| event_id:
+testparm i.fish_spec
+melogit sealicemot_bin i.month||unit_month:|| event_id:
+testparm i.month
+melogit sealicemot_bin i.sampling_unit||unit_month:|| event_id:
+testparm i.sampling_unit
+
+
+*multivariable mixed-effect logistic regression
+melogit sealicemot_bin i.source i.length_cat i.fish_spec i.month i.sampling_unit ||unit_month:|| event_id:,or
+
+testparm i.source
+testparm i.length_cat
+testparm i.fish_spec
+testparm i.month
+testparm i.sampling_unit
+
+*ICC
+estat icc
+restore
+
+
+*Mixed-effect negative binomial model 
+*2003
+*filter year
+keep if year==2003
+
+*Create a new hierarchial structure combining only sampling unit and month as there is a single year here
+egen unit_month= group(sampling_unit month)
+
+*Univariable mixed-effect negative binomial model
+menbreg sealice_mot i.source||unit_month:|| event_id:
+testparm i.source
+melogit sealice_mot i.length_cat||unit_month:|| event_id:
+testparm i.length_cat
+melogit sealice_mot i.fish_spec||unit_month:|| event_id:
+testparm i.fish_spec
+melogit sealice_mot i.month||unit_month:|| event_id:
+testparm i.month
+melogit sealice_mot i.sampling_unit||unit_month:|| event_id:
+testparm i.sampling_unit
+
+*Multivariable mixed-effect negative binomial model
+menbreg sealice_mot i.source i.length_cat i.fish_spec i.month i.sampling_unit ||unit_month:|| event_id:, irr
+
+testparm i.source
+testparm i.length_cat
+testparm i.fish_spec
+testparm i.month
+testparm i.sampling_unit
+
+restore
+
+
+
+*Mixed-effect negative binomial model 
+*2004
+*filter year
+keep if year==2004
+
+*Create a new hierarchial structure combining only sampling unit and month as there is a single year here
+egen unit_month= group(sampling_unit month)
+
+*Univariable mixed-effect negative binomial model
+menbreg sealice_mot i.source||unit_month:|| event_id:
+testparm i.source
+melogit sealice_mot i.length_cat||unit_month:|| event_id:
+testparm i.length_cat
+melogit sealice_mot i.fish_spec||unit_month:|| event_id:
+testparm i.fish_spec
+melogit sealice_mot i.month||unit_month:|| event_id:
+testparm i.month
+melogit sealice_mot i.sampling_unit||unit_month:|| event_id:
+testparm i.sampling_unit
+
+*Multivariable mixed-effect negative binomial model
+menbreg sealice_mot i.source i.length_cat i.fish_spec i.month i.sampling_unit ||unit_month:|| event_id:, irr
+
+testparm i.source
+testparm i.length_cat
+testparm i.fish_spec
+testparm i.month
+testparm i.sampling_unit
+
+restore
+
+
+
+*Mixed-effect negative binomial model 
+*2005
+*filter year
+keep if year==2005
+
+*Create a new hierarchial structure combining only sampling unit and month as there is a single year here
+egen unit_month= group(sampling_unit month)
+
+*Univariable mixed-effect negative binomial model
+menbreg sealice_mot i.source||unit_month:|| event_id:
+testparm i.source
+melogit sealice_mot i.length_cat||unit_month:|| event_id:
+testparm i.length_cat
+melogit sealice_mot i.fish_spec||unit_month:|| event_id:
+testparm i.fish_spec
+melogit sealice_mot i.month||unit_month:|| event_id:
+testparm i.month
+melogit sealice_mot i.sampling_unit||unit_month:|| event_id:
+testparm i.sampling_unit
+
+*Multivariable mixed-effect negative binomial model
+menbreg sealice_mot i.source i.length_cat i.fish_spec i.month i.sampling_unit ||unit_month:|| event_id:, irr
+
+testparm i.source
+testparm i.length_cat
+testparm i.fish_spec
+testparm i.month
+testparm i.sampling_unit
+
+restore
+
+
+
+
+***********************************************************************
+***********************NON-MOTILES (any species)***************************
+***********************************************************************
+
+*Mixed-effect logistic model
+*2003
+preserve
+*filter year
+keep if year==2003
+*Create a new hierarchial structure combining only sampling unit and month as there is a single year here
+egen unit_month= group(sampling_unit month)
+
+*Univariable mixed-effect logistic regression
+melogit sealicenmot_bin i.source||unit_month:|| event_id:
+testparm i.source
+melogit sealicenmot_bin i.length_cat||unit_month:|| event_id:
+testparm i.length_cat
+melogit sealicenmot_bin i.fish_spec||unit_month:|| event_id:
+testparm i.fish_spec
+melogit sealicenmot_bin i.month||unit_month:|| event_id:
+testparm i.month
+melogit sealicenmot_bin i.sampling_unit||unit_month:|| event_id:
+testparm i.sampling_unit
+
+
+*multivariable mixed-effect logistic regression
+melogit sealicenmot_bin i.source i.length_cat i.fish_spec i.month i.sampling_unit ||unit_month:|| event_id:,or
+
+testparm i.source
+testparm i.length_cat
+testparm i.fish_spec
+testparm i.month
+testparm i.sampling_unit
+
+*ICC
+estat icc
+restore
+
+
+*Mixed-effect logistic model
+*2004
+preserve
+*filter year
+keep if year==2004
+*Create a new hierarchial structure combining only sampling unit and month as there is a single year here
+egen unit_month= group(sampling_unit month)
+
+*Univariable mixed-effect logistic regression
+melogit sealicenmot_bin i.source||unit_month:|| event_id:
+testparm i.source
+melogit sealicenmot_bin i.length_cat||unit_month:|| event_id:
+testparm i.length_cat
+melogit sealicenmot_bin i.fish_spec||unit_month:|| event_id:
+testparm i.fish_spec
+melogit sealicenmot_bin i.month||unit_month:|| event_id:
+testparm i.month
+melogit sealicenmot_bin i.sampling_unit||unit_month:|| event_id:
+testparm i.sampling_unit
+
+
+*multivariable mixed-effect logistic regression
+melogit sealicenmot_bin i.source i.length_cat i.fish_spec i.month i.sampling_unit ||unit_month:|| event_id:,or
+
+testparm i.source
+testparm i.length_cat
+testparm i.fish_spec
+testparm i.month
+testparm i.sampling_unit
+
+*ICC
+estat icc
+restore
+
+*Mixed-effect logistic model
+*2005
+preserve
+*filter year
+keep if year==2005
+*Create a new hierarchial structure combining only sampling unit and month as there is a single year here
+egen unit_month= group(sampling_unit month)
+
+*Univariable mixed-effect logistic regression
+melogit sealicenmot_bin i.source||unit_month:|| event_id:
+testparm i.source
+melogit sealicenmot_bin i.length_cat||unit_month:|| event_id:
+testparm i.length_cat
+melogit sealicenmot_bin i.fish_spec||unit_month:|| event_id:
+testparm i.fish_spec
+melogit sealicenmot_bin i.month||unit_month:|| event_id:
+testparm i.month
+melogit sealicenmot_bin i.sampling_unit||unit_month:|| event_id:
+testparm i.sampling_unit
+
+
+*multivariable mixed-effect logistic regression
+melogit sealicenmot_bin i.source i.length_cat i.fish_spec i.month i.sampling_unit ||unit_month:|| event_id:,or
+
+testparm i.source
+testparm i.length_cat
+testparm i.fish_spec
+testparm i.month
+testparm i.sampling_unit
+
+*ICC
+estat icc
+restore
+
+
+
+
+*Mixed-effect negative binomial model 
+*2003
+*filter year
+keep if year==2003
+
+*Create a new hierarchial structure combining only sampling unit and month as there is a single year here
+egen unit_month= group(sampling_unit month)
+
+*Univariable mixed-effect negative binomial model
+menbreg sealice_nmot i.source||unit_month:|| event_id:
+testparm i.source
+melogit sealice_nmot i.length_cat||unit_month:|| event_id:
+testparm i.length_cat
+melogit sealice_nmot i.fish_spec||unit_month:|| event_id:
+testparm i.fish_spec
+melogit sealice_nmot i.month||unit_month:|| event_id:
+testparm i.month
+melogit sealice_nmot i.sampling_unit||unit_month:|| event_id:
+testparm i.sampling_unit
+
+*Multivariable mixed-effect negative binomial model
+menbreg sealice_nmot i.source i.length_cat i.fish_spec i.month i.sampling_unit ||unit_month:|| event_id:, irr
+
+testparm i.source
+testparm i.length_cat
+testparm i.fish_spec
+testparm i.month
+testparm i.sampling_unit
+
+restore
+
+
+
+*Mixed-effect negative binomial model 
+*2004
+*filter year
+keep if year==2004
+
+*Create a new hierarchial structure combining only sampling unit and month as there is a single year here
+egen unit_month= group(sampling_unit month)
+
+*Univariable mixed-effect negative binomial model
+menbreg sealice_nmot i.source||unit_month:|| event_id:
+testparm i.source
+melogit sealice_nmot i.length_cat||unit_month:|| event_id:
+testparm i.length_cat
+melogit sealice_nmot i.fish_spec||unit_month:|| event_id:
+testparm i.fish_spec
+melogit sealice_nmot i.month||unit_month:|| event_id:
+testparm i.month
+melogit sealice_nmot i.sampling_unit||unit_month:|| event_id:
+testparm i.sampling_unit
+
+*Multivariable mixed-effect negative binomial model
+menbreg sealice_nmot i.source i.length_cat i.fish_spec i.month i.sampling_unit ||unit_month:|| event_id:, irr /*model could not converge*/
+
+*Although the model could not converge here, the univariable mixed-effect logistic regression already suggest there was no significant differences between sampling groups.
+
+*Mixed-effect negative binomial model 
+*2005
+*filter year
+keep if year==2005
+
+*Create a new hierarchial structure combining only sampling unit and month as there is a single year here
+egen unit_month= group(sampling_unit month)
+
+*Univariable mixed-effect negative binomial model
+menbreg sealice_nmot i.source||unit_month:|| event_id:
+testparm i.source
+melogit sealice_nmot i.length_cat||unit_month:|| event_id:
+testparm i.length_cat
+melogit sealice_nmot i.fish_spec||unit_month:|| event_id:
+testparm i.fish_spec
+melogit sealice_nmot i.month||unit_month:|| event_id:
+testparm i.month
+melogit sealice_nmot i.sampling_unit||unit_month:|| event_id:
+testparm i.sampling_unit
+
+*Multivariable mixed-effect negative binomial model
+menbreg sealice_nmot i.source i.length_cat i.fish_spec i.month i.sampling_unit ||unit_month:|| event_id:, irr 
+
+testparm i.source
+testparm i.length_cat
+testparm i.fish_spec
 testparm i.month
 testparm i.sampling_unit
 
