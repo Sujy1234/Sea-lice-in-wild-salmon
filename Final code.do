@@ -423,7 +423,7 @@ bayesstats summary
 restore
 
 ***********************Non-motiles (any species)***************************
-*Mixed-effect negative binomial model logistic model
+*Mixed-effect negative binomial model
 *2006-2009
 preserve
 
@@ -456,11 +456,11 @@ testparm i.year
 testparm i.month
 testparm i.sampling_unit
 
-**multivariable mixed-effect logistic regression (to isolate the effect of source at differnt levels of fish length)
+**multivariable mixed-effect negative binomial regression (to isolate the effect of source at differnt levels of fish length)
 menbreg sealice_nmot i.length_cat#i.source i.length_cat i.fish_spec  i.year i.month i.sampling_unit ||unit_yearmonth:|| event_id:,irr
 
 
-*Bayesian mixed-effect logistic regression
+*Bayesian mixed-effect negative binomial regression
 bayes, rseed (123) burnin(20000) mcmcsize(60000): ///
 menbreg sealice_nmot i.length_cat#i.source i.length_cat i.fish_spec  i.year i.month i.sampling_unit ||unit_yearmonth:|| event_id:,irr
 
@@ -501,7 +501,7 @@ testparm i.year
 testparm i.month
 testparm i.sampling_unit
 
-*Bayesian mixed-effect logistic regression
+*Bayesian mixed-effect negative binomial regression
 bayes, rseed (123) burnin(20000) mcmcsize(60000): ///
 menbreg sealice_nmot i.source i.length_cat i.fish_spec i.year i.month i.sampling_unit ||unit_yearmonth:|| event_id:, irr
 
@@ -543,11 +543,11 @@ testparm i.year
 testparm i.month
 testparm i.sampling_unit
 
-**multivariable mixed-effect logistic regression (to isolate the effect of source at differnt levels of fish length)
+**multivariable mixed-effect negative binomial regression (to isolate the effect of source at differnt levels of fish length)
 menbreg sealice_nmot i.length_cat#i.source i.length_cat i.fish_spec  i.year i.month i.sampling_unit ||unit_yearmonth:|| event_id:,irr
 
 
-*Bayesian mixed-effect logistic regression
+*Bayesian mixed-effect negative binomial regression
 bayes, rseed (123) burnin(20000) mcmcsize(60000): ///
 menbreg sealice_nmot i.length_cat#i.source i.length_cat i.fish_spec  i.year i.month i.sampling_unit ||unit_yearmonth:|| event_id:,irr
 
@@ -671,6 +671,7 @@ restore
 
 *Mixed-effect negative binomial model 
 *2003
+preserve
 *filter year
 keep if year==2003
 
@@ -704,6 +705,7 @@ restore
 
 *Mixed-effect negative binomial model 
 *2004
+preserve
 *filter year
 keep if year==2004
 
@@ -737,6 +739,7 @@ restore
 
 *Mixed-effect negative binomial model 
 *2005
+preserve
 *filter year
 keep if year==2005
 
@@ -881,6 +884,7 @@ restore
 
 *Mixed-effect negative binomial model 
 *2003
+preserve
 *filter year
 keep if year==2003
 
@@ -914,6 +918,7 @@ restore
 
 *Mixed-effect negative binomial model 
 *2004
+preserve
 *filter year
 keep if year==2004
 
@@ -937,8 +942,11 @@ menbreg sealice_nmot i.source i.length_cat i.fish_spec i.month i.sampling_unit |
 
 *Although the model could not converge here, the univariable mixed-effect logistic regression already suggest there was no significant differences between sampling groups.
 
+restore
+
 *Mixed-effect negative binomial model 
 *2005
+preserve
 *filter year
 keep if year==2005
 
