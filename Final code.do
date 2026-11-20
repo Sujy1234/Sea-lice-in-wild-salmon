@@ -165,15 +165,15 @@ drop if year<2006 /*Martin Krkosek's team did not collect data in this year*/
 *Univariable mixed-effect negative binomial model
 menbreg sealice_mot i.source||unit_yearmonth:|| event_id:
 testparm i.source
-melogit sealice_mot i.length_cat||unit_yearmonth:|| event_id:
+menbreg sealice_mot i.length_cat||unit_yearmonth:|| event_id:
 testparm i.length_cat
-melogit sealice_mot i.fish_spec||unit_yearmonth:|| event_id:
+menbreg sealice_mot i.fish_spec||unit_yearmonth:|| event_id:
 testparm i.fish_spec
-melogit sealice_mot i.year||unit_yearmonth:|| event_id:
+menbreg sealice_mot i.year||unit_yearmonth:|| event_id:
 testparm i.year
-melogit sealice_mot i.month||unit_yearmonth:|| event_id:
+menbreg sealice_mot i.month||unit_yearmonth:|| event_id:
 testparm i.month
-melogit sealice_mot i.sampling_unit||unit_yearmonth:|| event_id:
+menbreg sealice_mot i.sampling_unit||unit_yearmonth:|| event_id:
 testparm i.sampling_unit
 
 *Multivariable mixed-effect negative binomial model
@@ -205,15 +205,15 @@ drop if year>2012
 *Univariable mixed-effec negative binomial model
 menbreg sealice_mot i.source||unit_yearmonth:|| event_id:
 testparm i.source
-melogit sealice_mot i.length_cat||unit_yearmonth:|| event_id:
+menbreg sealice_mot i.length_cat||unit_yearmonth:|| event_id:
 testparm i.length_cat
-melogit sealice_mot i.fish_spec||unit_yearmonth:|| event_id:
+menbreg sealice_mot i.fish_spec||unit_yearmonth:|| event_id:
 testparm i.fish_spec
-melogit sealice_mot i.year||unit_yearmonth:|| event_id:
+menbreg sealice_mot i.year||unit_yearmonth:|| event_id:
 testparm i.year
-melogit sealice_mot i.month||unit_yearmonth:|| event_id:
+menbreg sealice_mot i.month||unit_yearmonth:|| event_id:
 testparm i.month
-melogit sealice_mot i.sampling_unit||unit_yearmonth:|| event_id:
+menbreg sealice_mot i.sampling_unit||unit_yearmonth:|| event_id:
 testparm i.sampling_unit
 
 *Multivariable mixed-effect negative binomial model
@@ -245,15 +245,15 @@ drop if year<2016
 *Univariable mixed-effec negative binomial model
 menbreg sealice_mot i.source||unit_yearmonth:|| event_id:
 testparm i.source
-melogit sealice_mot i.length_cat||unit_yearmonth:|| event_id:
+menbreg sealice_mot i.length_cat||unit_yearmonth:|| event_id:
 testparm i.length_cat
-melogit sealice_mot i.fish_spec||unit_yearmonth:|| event_id:
+menbreg sealice_mot i.fish_spec||unit_yearmonth:|| event_id:
 testparm i.fish_spec
-melogit sealice_mot i.year||unit_yearmonth:|| event_id:
+menbreg sealice_mot i.year||unit_yearmonth:|| event_id:
 testparm i.year
-melogit sealice_mot i.month||unit_yearmonth:|| event_id:
+menbreg sealice_mot i.month||unit_yearmonth:|| event_id:
 testparm i.month
-melogit sealice_mot i.sampling_unit||unit_yearmonth:|| event_id:
+menbreg sealice_mot i.sampling_unit||unit_yearmonth:|| event_id:
 testparm i.sampling_unit
 
 *Multivariable mixed-effect negative binomial model
@@ -434,15 +434,15 @@ drop if year<2006  /*Martin Krkosek's team did not collect data in this year*/
 *Univariable mixed-effect negative binomial model
 menbreg sealice_nmot i.source||unit_yearmonth:|| event_id:
 testparm i.source
-melogit sealice_nmot i.length_cat||unit_yearmonth:|| event_id:
+menbreg sealice_nmot i.length_cat||unit_yearmonth:|| event_id:
 testparm i.length_cat
-melogit sealice_nmot i.fish_spec||unit_yearmonth:|| event_id:
+menbreg sealice_nmot i.fish_spec||unit_yearmonth:|| event_id:
 testparm i.fish_spec
-melogit sealice_nmot i.year||unit_yearmonth:|| event_id:
+menbreg sealice_nmot i.year||unit_yearmonth:|| event_id:
 testparm i.year
-melogit sealice_nmot i.month||unit_yearmonth:|| event_id:
+menbreg sealice_nmot i.month||unit_yearmonth:|| event_id:
 testparm i.month
-melogit sealice_nmot i.sampling_unit||unit_yearmonth:|| event_id:
+menbreg sealice_nmot i.sampling_unit||unit_yearmonth:|| event_id:
 testparm i.sampling_unit
 
 *Multivariable mixed-effect negative binomial model
@@ -480,15 +480,15 @@ drop if year>2012
 *Univariable mixed-effec negative binomial model
 menbreg sealice_nmot i.source||unit_yearmonth:|| event_id:
 testparm i.source
-melogit sealice_nmot i.length_cat||unit_yearmonth:|| event_id:
+menbreg sealice_nmot i.length_cat||unit_yearmonth:|| event_id:
 testparm i.length_cat
-melogit sealice_nmot i.fish_spec||unit_yearmonth:|| event_id:
+menbreg sealice_nmot i.fish_spec||unit_yearmonth:|| event_id:
 testparm i.fish_spec
-melogit sealice_nmot i.year||unit_yearmonth:|| event_id:
+menbreg sealice_nmot i.year||unit_yearmonth:|| event_id:
 testparm i.year
-melogit sealice_nmot i.month||unit_yearmonth:|| event_id:
+menbreg sealice_nmot i.month||unit_yearmonth:|| event_id:
 testparm i.month
-melogit sealice_nmot i.sampling_unit||unit_yearmonth:|| event_id:
+menbreg sealice_nmot i.sampling_unit||unit_yearmonth:|| event_id:
 testparm i.sampling_unit
 
 *Multivariable mixed-effect negative binomial model
@@ -521,15 +521,15 @@ drop if year<2016
 *Univariable mixed-effec negative binomial model
 menbreg sealice_nmot i.source||unit_yearmonth:|| event_id:
 testparm i.source
-melogit sealice_nmot i.length_cat||unit_yearmonth:|| event_id:
+menbreg sealice_nmot i.length_cat||unit_yearmonth:|| event_id:
 testparm i.length_cat
-melogit sealice_nmot i.fish_spec||unit_yearmonth:|| event_id:
+menbreg sealice_nmot i.fish_spec||unit_yearmonth:|| event_id:
 testparm i.fish_spec
-melogit sealice_nmot i.year||unit_yearmonth:|| event_id:
+menbreg sealice_nmot i.year||unit_yearmonth:|| event_id:
 testparm i.year
-melogit sealice_nmot i.month||unit_yearmonth:|| event_id:
+menbreg sealice_nmot i.month||unit_yearmonth:|| event_id:
 testparm i.month
-melogit sealice_nmot i.sampling_unit||unit_yearmonth:|| event_id:
+menbreg sealice_nmot i.sampling_unit||unit_yearmonth:|| event_id:
 testparm i.sampling_unit
 
 *Multivariable mixed-effect negative binomial model
@@ -680,13 +680,13 @@ egen unit_month= group(sampling_unit month)
 *Univariable mixed-effect negative binomial model
 menbreg sealice_mot i.source||unit_month:|| event_id:
 testparm i.source
-melogit sealice_mot i.length_cat||unit_month:|| event_id:
+menbreg sealice_mot i.length_cat||unit_month:|| event_id:
 testparm i.length_cat
-melogit sealice_mot i.fish_spec||unit_month:|| event_id:
+menbreg sealice_mot i.fish_spec||unit_month:|| event_id:
 testparm i.fish_spec
-melogit sealice_mot i.month||unit_month:|| event_id:
+menbreg sealice_mot i.month||unit_month:|| event_id:
 testparm i.month
-melogit sealice_mot i.sampling_unit||unit_month:|| event_id:
+menbreg sealice_mot i.sampling_unit||unit_month:|| event_id:
 testparm i.sampling_unit
 
 *Multivariable mixed-effect negative binomial model
@@ -713,13 +713,13 @@ egen unit_month= group(sampling_unit month)
 *Univariable mixed-effect negative binomial model
 menbreg sealice_mot i.source||unit_month:|| event_id:
 testparm i.source
-melogit sealice_mot i.length_cat||unit_month:|| event_id:
+menbreg sealice_mot i.length_cat||unit_month:|| event_id:
 testparm i.length_cat
-melogit sealice_mot i.fish_spec||unit_month:|| event_id:
+menbreg sealice_mot i.fish_spec||unit_month:|| event_id:
 testparm i.fish_spec
-melogit sealice_mot i.month||unit_month:|| event_id:
+menbreg sealice_mot i.month||unit_month:|| event_id:
 testparm i.month
-melogit sealice_mot i.sampling_unit||unit_month:|| event_id:
+menbreg sealice_mot i.sampling_unit||unit_month:|| event_id:
 testparm i.sampling_unit
 
 *Multivariable mixed-effect negative binomial model
@@ -746,13 +746,13 @@ egen unit_month= group(sampling_unit month)
 *Univariable mixed-effect negative binomial model
 menbreg sealice_mot i.source||unit_month:|| event_id:
 testparm i.source
-melogit sealice_mot i.length_cat||unit_month:|| event_id:
+menbreg sealice_mot i.length_cat||unit_month:|| event_id:
 testparm i.length_cat
-melogit sealice_mot i.fish_spec||unit_month:|| event_id:
+menbreg sealice_mot i.fish_spec||unit_month:|| event_id:
 testparm i.fish_spec
-melogit sealice_mot i.month||unit_month:|| event_id:
+menbreg sealice_mot i.month||unit_month:|| event_id:
 testparm i.month
-melogit sealice_mot i.sampling_unit||unit_month:|| event_id:
+menbreg sealice_mot i.sampling_unit||unit_month:|| event_id:
 testparm i.sampling_unit
 
 *Multivariable mixed-effect negative binomial model
@@ -890,13 +890,13 @@ egen unit_month= group(sampling_unit month)
 *Univariable mixed-effect negative binomial model
 menbreg sealice_nmot i.source||unit_month:|| event_id:
 testparm i.source
-melogit sealice_nmot i.length_cat||unit_month:|| event_id:
+menbreg sealice_nmot i.length_cat||unit_month:|| event_id:
 testparm i.length_cat
-melogit sealice_nmot i.fish_spec||unit_month:|| event_id:
+menbreg sealice_nmot i.fish_spec||unit_month:|| event_id:
 testparm i.fish_spec
-melogit sealice_nmot i.month||unit_month:|| event_id:
+menbreg sealice_nmot i.month||unit_month:|| event_id:
 testparm i.month
-melogit sealice_nmot i.sampling_unit||unit_month:|| event_id:
+menbreg sealice_nmot i.sampling_unit||unit_month:|| event_id:
 testparm i.sampling_unit
 
 *Multivariable mixed-effect negative binomial model
@@ -923,13 +923,13 @@ egen unit_month= group(sampling_unit month)
 *Univariable mixed-effect negative binomial model
 menbreg sealice_nmot i.source||unit_month:|| event_id:
 testparm i.source
-melogit sealice_nmot i.length_cat||unit_month:|| event_id:
+menbreg sealice_nmot i.length_cat||unit_month:|| event_id:
 testparm i.length_cat
-melogit sealice_nmot i.fish_spec||unit_month:|| event_id:
+menbreg sealice_nmot i.fish_spec||unit_month:|| event_id:
 testparm i.fish_spec
-melogit sealice_nmot i.month||unit_month:|| event_id:
+menbreg sealice_nmot i.month||unit_month:|| event_id:
 testparm i.month
-melogit sealice_nmot i.sampling_unit||unit_month:|| event_id:
+menbreg sealice_nmot i.sampling_unit||unit_month:|| event_id:
 testparm i.sampling_unit
 
 *Multivariable mixed-effect negative binomial model
@@ -948,13 +948,13 @@ egen unit_month= group(sampling_unit month)
 *Univariable mixed-effect negative binomial model
 menbreg sealice_nmot i.source||unit_month:|| event_id:
 testparm i.source
-melogit sealice_nmot i.length_cat||unit_month:|| event_id:
+menbreg sealice_nmot i.length_cat||unit_month:|| event_id:
 testparm i.length_cat
-melogit sealice_nmot i.fish_spec||unit_month:|| event_id:
+menbreg sealice_nmot i.fish_spec||unit_month:|| event_id:
 testparm i.fish_spec
-melogit sealice_nmot i.month||unit_month:|| event_id:
+menbreg sealice_nmot i.month||unit_month:|| event_id:
 testparm i.month
-melogit sealice_nmot i.sampling_unit||unit_month:|| event_id:
+menbreg sealice_nmot i.sampling_unit||unit_month:|| event_id:
 testparm i.sampling_unit
 
 *Multivariable mixed-effect negative binomial model
